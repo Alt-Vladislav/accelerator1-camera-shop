@@ -11,4 +11,10 @@ const AppRoute = {
   }
 } as const;
 
-export { AppRoute };
+const Camera = {
+  Types: ['Коллекционная', 'Моментальная', 'Цифровая', 'Плёночная'],
+  Categories: ['Видеокамера', 'Фотоаппарат'],
+  Levels: ['Нулевой', 'Любительский', 'Профессиональный']
+} as const;
+
+export { AppRoute, Camera };
