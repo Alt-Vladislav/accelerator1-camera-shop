@@ -15,7 +15,7 @@ type LoadingStatus = typeof LoadingStatus[keyof typeof LoadingStatus];
 
 type LoadedData<T> = {
   data: T;
-  status: LoadingStatus;
+  loadingStatus: LoadingStatus;
 }
 
 type AppState = {

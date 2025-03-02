@@ -4,9 +4,9 @@ import { fetchCamera, fetchSimilarCameras, fetchReviews } from './camera-thunks'
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialSLiceState: Pick<AppState, 'camera' | 'similarCameras' | 'reviews'> = {
-  camera: { data: null, status: LoadingStatus.Unknown },
-  similarCameras: { data: [], status: LoadingStatus.Unknown },
-  reviews: { data: [], status: LoadingStatus.Unknown }
+  camera: { data: null, loadingStatus: LoadingStatus.Unknown },
+  similarCameras: { data: [], loadingStatus: LoadingStatus.Unknown },
+  reviews: { data: [], loadingStatus: LoadingStatus.Unknown }
 };
 
 
@@ -17,37 +17,37 @@ export const cameraSlice = createSlice({
   extraReducers(builder) {
     builder
       .addCase(fetchCamera.pending, (state) => {
-        state.camera.status = LoadingStatus.Loading;
+        state.camera.loadingStatus = LoadingStatus.Loading;
       })
       .addCase(fetchCamera.fulfilled, (state, action) => {
         state.camera.data = action.payload;
-        state.camera.status = LoadingStatus.Loaded;
+        state.camera.loadingStatus = LoadingStatus.Loaded;
       })
       .addCase(fetchCamera.rejected, (state) => {
         state.camera.data = initialSLiceState.camera.data;
-        state.camera.status = LoadingStatus.Error;
+        state.camera.loadingStatus = LoadingStatus.Error;
       })
       .addCase(fetchSimilarCameras.pending, (state) => {
-        state.similarCameras.status = LoadingStatus.Loading;
+        state.similarCameras.loadingStatus = LoadingStatus.Loading;
       })
       .addCase(fetchSimilarCameras.fulfilled, (state, action) => {
         state.similarCameras.data = action.payload;
-        state.similarCameras.status = LoadingStatus.Loaded;
+        state.similarCameras.loadingStatus = LoadingStatus.Loaded;
       })
       .addCase(fetchSimilarCameras.rejected, (state) => {
         state.similarCameras.data = initialSLiceState.similarCameras.data;
-        state.similarCameras.status = LoadingStatus.Error;
+        state.similarCameras.loadingStatus = LoadingStatus.Error;
       })
       .addCase(fetchReviews.pending, (state) => {
-        state.reviews.status = LoadingStatus.Loading;
+        state.reviews.loadingStatus = LoadingStatus.Loading;
       })
       .addCase(fetchReviews.fulfilled, (state, action) => {
         state.reviews.data = action.payload;
-        state.reviews.status = LoadingStatus.Loaded;
+        state.reviews.loadingStatus = LoadingStatus.Loaded;
       })
       .addCase(fetchReviews.rejected, (state) => {
         state.reviews.data = initialSLiceState.reviews.data;
-        state.reviews.status = LoadingStatus.Error;
+        state.reviews.loadingStatus = LoadingStatus.Error;
       });
   }
 });
