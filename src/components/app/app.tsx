@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { useAppDispatch } from '../../hooks/use-app-dispatch';
 import { fetchCameras } from '../../store/cameras-slice/cameras-thunks';
+import { fetchPromotions } from '../../store/promotions-slice/promotions-thunks';
 import { useEffect } from 'react';
 import Layout from '../../pages/layout/layout';
 import CatalogPage from '../../pages/catalog-page/catalog-page';
@@ -14,6 +15,7 @@ export default function App() {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(fetchCameras());
+    dispatch(fetchPromotions());
   }, [dispatch]);
 
   return (
