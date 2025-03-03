@@ -1,0 +1,96 @@
+.spinner-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  min-height: inherit;
+}
+
+.spinner {
+  color: #7575e2;
+  display: inline-block;
+  position: relative;
+  width: 83px;
+  height: 83px;
+}
+
+.elevated {
+  padding-bottom: 50%;
+}
+
+.spinner div {
+  box-sizing: border-box;
+  position: absolute;
+  width: 23px;
+  height: 23px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: spinner-animation 1.2s linear infinite;
+}
+
+.spinner div:nth-child(1) {
+  top: 0px;
+  left: 0px;
+  animation-delay: 0s;
+}
+
+.spinner div:nth-child(2) {
+  top: 0px;
+  left: 30px;
+  animation-delay: -0.4s;
+}
+
+.spinner div:nth-child(3) {
+  top: 0px;
+  left: 60px;
+  animation-delay: -0.8s;
+}
+
+.spinner div:nth-child(4) {
+  top: 30px;
+  left: 0px;
+  animation-delay: -0.4s;
+}
+
+.spinner div:nth-child(5) {
+  top: 30px;
+  left: 30px;
+  animation-delay: -0.8s;
+}
+
+.spinner div:nth-child(6) {
+  top: 30px;
+  left: 60px;
+  animation-delay: -1.2s;
+}
+
+.spinner div:nth-child(7) {
+  top: 60px;
+  left: 0px;
+  animation-delay: -0.8s;
+}
+
+.spinner div:nth-child(8) {
+  top: 60px;
+  left: 30px;
+  animation-delay: -1.2s;
+}
+
+.spinner div:nth-child(9) {
+  top: 60px;
+  left: 60px;
+  animation-delay: -1.6s;
+}
+
+@keyframes spinner-animation {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.6;
+  }
+}
