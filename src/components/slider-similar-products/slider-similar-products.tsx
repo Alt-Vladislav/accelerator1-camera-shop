@@ -4,8 +4,10 @@ export default function SliderSimilarProducts() {
       <section className="product-similar">
         <div className="container">
           <h2 className="title title--h3">Похожие товары</h2>
+
           <div className="product-similar__slider">
             <div className="product-similar__slider-list">
+
               <div className="product-card is-active">
                 <div className="product-card__img">
                   <picture>
@@ -61,6 +63,7 @@ export default function SliderSimilarProducts() {
                   </a>
                 </div>
               </div>
+
               <div className="product-card is-active">
                 <div className="product-card__img">
                   <picture>
@@ -116,6 +119,7 @@ export default function SliderSimilarProducts() {
                   </a>
                 </div>
               </div>
+
               <div className="product-card is-active">
                 <div className="product-card__img">
                   <picture>
@@ -171,6 +175,7 @@ export default function SliderSimilarProducts() {
                   </a>
                 </div>
               </div>
+
               <div className="product-card">
                 <div className="product-card__img">
                   <picture>
@@ -226,6 +231,7 @@ export default function SliderSimilarProducts() {
                   </a>
                 </div>
               </div>
+
               <div className="product-card">
                 <div className="product-card__img">
                   <picture>
@@ -281,6 +287,7 @@ export default function SliderSimilarProducts() {
                   </a>
                 </div>
               </div>
+
               <div className="product-card">
                 <div className="product-card__img">
                   <picture>
@@ -336,7 +343,9 @@ export default function SliderSimilarProducts() {
                   </a>
                 </div>
               </div>
+
             </div>
+
             <button
               className="slider-controls slider-controls--prev"
               type="button"
