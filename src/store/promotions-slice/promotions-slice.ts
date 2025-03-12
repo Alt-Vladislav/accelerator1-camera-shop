@@ -4,7 +4,7 @@ import { fetchPromotions } from './promotions-thunks';
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialSLiceState: Pick<AppState, 'promotions'> = {
-  promotions: { data: [], status: LoadingStatus.Unknown },
+  promotions: { data: [], loadingStatus: LoadingStatus.Unknown },
 };
 
 
@@ -15,15 +15,15 @@ export const promotionsSlice = createSlice({
   extraReducers(builder) {
     builder
       .addCase(fetchPromotions.pending, (state) => {
-        state.promotions.status = LoadingStatus.Loading;
+        state.promotions.loadingStatus = LoadingStatus.Loading;
       })
       .addCase(fetchPromotions.fulfilled, (state, action) => {
         state.promotions.data = action.payload;
-        state.promotions.status = LoadingStatus.Loaded;
+        state.promotions.loadingStatus = LoadingStatus.Loaded;
       })
       .addCase(fetchPromotions.rejected, (state) => {
         state.promotions.data = [];
-        state.promotions.status = LoadingStatus.Error;
+        state.promotions.loadingStatus = LoadingStatus.Error;
       });
   }
 });

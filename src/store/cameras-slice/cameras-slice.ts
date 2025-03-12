@@ -4,7 +4,7 @@ import { fetchCameras } from './cameras-thunks';
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialSLiceState: Pick<AppState, 'cameras'> = {
-  cameras: { data: [], status: LoadingStatus.Unknown },
+  cameras: { data: [], loadingStatus: LoadingStatus.Unknown },
 };
 
 
@@ -15,15 +15,15 @@ export const camerasSlice = createSlice({
   extraReducers(builder) {
     builder
       .addCase(fetchCameras.pending, (state) => {
-        state.cameras.status = LoadingStatus.Loading;
+        state.cameras.loadingStatus = LoadingStatus.Loading;
       })
       .addCase(fetchCameras.fulfilled, (state, action) => {
         state.cameras.data = action.payload;
-        state.cameras.status = LoadingStatus.Loaded;
+        state.cameras.loadingStatus = LoadingStatus.Loaded;
       })
       .addCase(fetchCameras.rejected, (state) => {
         state.cameras.data = [];
-        state.cameras.status = LoadingStatus.Error;
+        state.cameras.loadingStatus = LoadingStatus.Error;
       });
   }
 });
