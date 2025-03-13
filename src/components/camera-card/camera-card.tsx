@@ -31,12 +31,13 @@ export default function CameraCard({ camera }: CameraCardProps): JSX.Element {
         width={ImageSize.Width}
         height={ImageSize.Height}
         title={name}
+        isCard
       />
 
       <div className="product-card__info">
-        <ProductRating rating={rating} reviewCount={reviewCount} />
-        <ProductTitle name={name} category={category} />
-        <ProductPrice price={price} />
+        <ProductRating rating={rating} reviewCount={reviewCount} isCard />
+        <ProductTitle name={name} category={category} isCard />
+        <ProductPrice price={price} isCard />
       </div>
 
       <div className="product-card__buttons">

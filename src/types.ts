@@ -38,4 +38,4 @@ type Review = {
 
 type Page = keyof typeof AppRoute;
 
-export type { Camera, Promotion, Review, Page };
+export type { Camera, CameraType, CameraCategory, CameraLevel, Promotion, Review, Page };

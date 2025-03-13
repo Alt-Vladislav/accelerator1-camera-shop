@@ -1,4 +1,7 @@
+import classNames from 'classnames';
+
 type ProductRatingProps = {
+  isCard?: boolean;
   rating: number;
   reviewCount: number;
 }
@@ -6,9 +9,9 @@ type ProductRatingProps = {
 const STAR_COUNT = 5;
 
 
-export default function ProductRating({ rating, reviewCount }: ProductRatingProps): JSX.Element {
+export default function ProductRating({ isCard = false, rating, reviewCount }: ProductRatingProps): JSX.Element {
   return (
-    <div className="rate product-card__rate">
+    <div className={classNames('rate', { 'product-card__rate': isCard, 'product__rate': !isCard })}>
       {Array.from({ length: STAR_COUNT }, (_, index) => (
         <svg key={`star-${index}`} width={17} height={16} aria-hidden="true">
           <use xlinkHref={index < rating ? '#icon-full-star' : '#icon-star'} />
