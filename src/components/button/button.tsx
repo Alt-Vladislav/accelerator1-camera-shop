@@ -9,6 +9,7 @@ type ButtonProps = {
   isDisabled?: boolean;
 }
 
+
 export default function Button({ text, type, isPurple = false, isModal = false, extraClass = '', isDisabled = false }: ButtonProps): JSX.Element {
   return (
     <button

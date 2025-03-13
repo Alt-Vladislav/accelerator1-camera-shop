@@ -18,7 +18,7 @@ export default function Layout(): JSX.Element {
         {/*TODO 'сделать helmet' <title>{currentPageName === 'Quest' ? title.replace('@', currentQuest?.title || '') : title}</title> */}
       </Helmet>
 
-      <Header />
+      <Header currentPage={currentPage} />
 
       <main>
         {currentPage === 'Catalog' && <Banner />}
@@ -30,7 +30,7 @@ export default function Layout(): JSX.Element {
 
       {/* TODO: сделать кнопку наверх */}
       {false && <UpButton />}
-      <Footer />
+      <Footer currentPage={currentPage} />
     </div>
   );
 }

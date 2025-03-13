@@ -1,13 +1,17 @@
-export default function Footer(): JSX.Element {
+import { Page } from '../../types';
+import Logo from '../logo/logo';
+
+type FooterProps = {
+  currentPage: Page | undefined;
+}
+
+
+export default function Footer({ currentPage }: FooterProps): JSX.Element {
   return (
     <footer className="footer">
       <div className="container">
         <div className="footer__info">
-          <a className="footer__logo" href="index.html" aria-label="Переход на главную">
-            <svg width={100} height={36} aria-hidden="true">
-              <use xlinkHref="#icon-logo-mono" />
-            </svg>
-          </a>
+          <Logo location='footer' isUpButton={currentPage === 'Catalog'} />
           <p className="footer__description">Интернет-магазин фото- и видеотехники</p>
           <ul className="social">
             <li className="social__item">
