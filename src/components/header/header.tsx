@@ -1,12 +1,16 @@
-export default function Header(): JSX.Element {
+import { Page } from '../../types';
+import Logo from '../logo/logo';
+
+type HeaderProps = {
+  currentPage: Page | undefined;
+}
+
+
+export default function Header({ currentPage }: HeaderProps): JSX.Element {
   return (
     <header className="header" id="header">
       <div className="container">
-        <a className="header__logo" href="index.html" aria-label="Переход на главную">
-          <svg width={100} height={36} aria-hidden="true">
-            <use xlinkHref="#icon-logo" />
-          </svg>
-        </a>
+        <Logo location='header' isUpButton={currentPage === 'Catalog'} />
         <nav className="main-nav header__main-nav">
           <ul className="main-nav__list">
             <li className="main-nav__item">

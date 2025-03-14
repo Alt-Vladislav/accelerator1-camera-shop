@@ -1,7 +1,9 @@
-// import { AppRoute } from '../../consts';
+import { AppRoute } from '../../consts';
+import { getPageName } from '../../utils';
 import { Helmet } from 'react-helmet-async';
 import { Outlet, useLocation } from 'react-router-dom';
-import { getPageName } from '../../utils';
+import { useAppSelector } from '../../hooks/use-app-selector';
+import { selectCamera } from '../../store/camera-slice/camera-selectors';
 import Header from '../../components/header/header';
 import Banner from '../../components/banner/banner';
 import Breadcrumbs from '../../components/breadcrumbs/breadcrumbs';
@@ -11,14 +13,16 @@ import UpButton from '../../components/up-button/up-button';
 
 export default function Layout(): JSX.Element {
   const currentPage = getPageName(useLocation().pathname);
+  const {data: camera} = useAppSelector(selectCamera);
+  const title = currentPage ? AppRoute[currentPage].Title : '';
 
   return (
     <div className="wrapper">
       <Helmet>
-        {/*TODO 'сделать helmet' <title>{currentPageName === 'Quest' ? title.replace('@', currentQuest?.title || '') : title}</title> */}
+        <title>{currentPage === 'Product' ? title.replace('@', camera?.name || '') : title}</title>
       </Helmet>
 
-      <Header />
+      <Header currentPage={currentPage} />
 
       <main>
         {currentPage === 'Catalog' && <Banner />}
@@ -30,7 +34,7 @@ export default function Layout(): JSX.Element {
 
       {/* TODO: сделать кнопку наверх */}
       {false && <UpButton />}
-      <Footer />
+      <Footer currentPage={currentPage} />
     </div>
   );
 }

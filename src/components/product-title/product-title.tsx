@@ -1,6 +1,8 @@
+import { memo } from 'react';
 import './product-title.css';
 
 type ProductTitleProps = {
+  isCard?: boolean;
   name: string;
   category: string;
 }
@@ -13,12 +15,15 @@ const CorrectionMap = {
 const EXCLUSION_CATEGORY = 'Ретрокамера';
 
 
-export default function ProductTitle({ name, category }: ProductTitleProps): JSX.Element {
+function BaseProductTitle({ isCard = false, name, category }: ProductTitleProps): JSX.Element {
   const titleStart = name.includes(EXCLUSION_CATEGORY) ? '' : category;
+  const title = `${titleStart} ${name.replace(CorrectionMap.SearchText, CorrectionMap.ReplaceText)}`;
 
   return (
-    <p className="product-card__title">
-      {`${titleStart} ${name.replace(CorrectionMap.SearchText, CorrectionMap.ReplaceText)}`}
-    </p>
+    isCard
+      ? <p className="product-card__title">{title}</p>
+      : <h1 className="title title--h3">{title}</h1>
   );
 }
+
+export const ProductTitle = memo(BaseProductTitle);

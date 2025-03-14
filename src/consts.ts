@@ -1,12 +1,12 @@
 const AppRoute = {
   Catalog: {
     Path: '/',
-    Title: 'New View: Каталог',
-    TitleLink: 'Перейти в каталог',
+    Title: 'Каталог - Фотошоп',
+    TitleLink: 'Переход на главную',
   },
   Product: {
     Path: '/camera/:id',
-    Title: 'New View: @',
+    Title: '@ - Фотошоп',
     TitleLink: null,
   }
 } as const;

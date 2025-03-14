@@ -1,9 +1,11 @@
+import { memo } from 'react';
 import { Link } from 'react-router-dom';
 
 type ButtonLinkProps = {
   text: string;
   link: string;
   background?: keyof typeof BackgroundSetting;
+  onClick?: () => void;
 }
 
 const BackgroundSetting = {
@@ -16,9 +18,9 @@ const BackgroundSetting = {
 } as const;
 
 
-export default function ButtonLink({ link, text, background }: ButtonLinkProps): JSX.Element {
+function BaseButtonLink({ link, text, background, onClick }: ButtonLinkProps): JSX.Element {
   return (
-    <Link to={link} className={`btn ${background ? BackgroundSetting[background].Class : ''}`}>
+    <Link to={link} className={`btn ${background ? BackgroundSetting[background].Class : ''}`} onClick={onClick}>
       {background === 'PurpleBorder' && (
         <svg width={16} height={16} aria-hidden="true">
           <use xlinkHref="#icon-basket" />
@@ -29,3 +31,4 @@ export default function ButtonLink({ link, text, background }: ButtonLinkProps):
   );
 }
 
+export const ButtonLink = memo(BaseButtonLink);
