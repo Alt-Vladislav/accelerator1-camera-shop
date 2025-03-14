@@ -40,7 +40,7 @@ export default function ProductPage(): JSX.Element {
   }, [cameraId, loadingStatus, dispatch]);
 
   if (camera === null && loadingStatus === 'Loading') {
-    return <Spinner />;
+    return <Spinner isLowered/>;
   }
   if (cameraId === undefined || camera === null) {
     return <ErrorPage />;
