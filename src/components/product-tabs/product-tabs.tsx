@@ -1,5 +1,5 @@
 import { CameraType, CameraCategory, CameraLevel } from '../../types';
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import classNames from 'classnames';
 
 type ProductTabsProps = {
@@ -11,7 +11,7 @@ type ProductTabsProps = {
 }
 
 
-export default function ProductTabs({ vendorCode, category, type, level, description }: ProductTabsProps): JSX.Element {
+function BaseProductTabs({ vendorCode, category, type, level, description }: ProductTabsProps): JSX.Element {
   const [isDescriptionActive, setIsDescriptionActive] = useState(true);
   const handleTabClick = () => setIsDescriptionActive((prev) => !prev);
   const tabs = [['Артикул', vendorCode], ['Категория', category], ['Тип камеры', type], ['Уровень', level]];
@@ -46,3 +46,5 @@ export default function ProductTabs({ vendorCode, category, type, level, descrip
     </div>
   );
 }
+
+export const ProductTabs = memo(BaseProductTabs);

@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import classNames from 'classnames';
 
 type ButtonProps = {
@@ -11,7 +12,7 @@ type ButtonProps = {
 
 const ICON_TRIGGER_KEYWORDS = ['Добавить в корзину', 'Заказать'];
 
-export default function Button({ text, type, isPurple = false, isModal = false, extraClass = '', isDisabled = false }: ButtonProps): JSX.Element {
+function BaseButton({ text, type, isPurple = false, isModal = false, extraClass = '', isDisabled = false }: ButtonProps): JSX.Element {
   return (
     <button
       className={classNames(`btn ${extraClass}`, { 'btn--purple': isPurple, 'modal__btn': isModal })}
@@ -31,3 +32,5 @@ export default function Button({ text, type, isPurple = false, isModal = false, 
     </button>
   );
 }
+
+export const Button = memo(BaseButton);

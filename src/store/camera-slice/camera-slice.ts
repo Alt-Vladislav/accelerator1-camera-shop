@@ -1,7 +1,8 @@
 import { AppState } from '../types';
+import { Camera } from '../../types';
 import { SliceName, LoadingStatus } from '../consts';
 import { fetchCamera, fetchSimilarCameras, fetchReviews } from './camera-thunks';
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 const initialSLiceState: Pick<AppState, 'camera' | 'similarCameras' | 'reviews'> = {
   camera: { data: null, loadingStatus: LoadingStatus.Unknown },
@@ -13,7 +14,16 @@ const initialSLiceState: Pick<AppState, 'camera' | 'similarCameras' | 'reviews'>
 export const cameraSlice = createSlice({
   name: SliceName.Camera,
   initialState: initialSLiceState,
-  reducers: {},
+  reducers: {
+    setPreloadCamera(state, action: PayloadAction<Camera>) {
+      if (action.payload.id !== state.camera.data?.id) {
+        state.camera.data = action.payload;
+        state.camera.loadingStatus = 'Unknown';
+        state.similarCameras = initialSLiceState.similarCameras;
+        state.reviews = initialSLiceState.reviews;
+      }
+    }
+  },
   extraReducers(builder) {
     builder
       .addCase(fetchCamera.pending, (state) => {
@@ -51,3 +61,5 @@ export const cameraSlice = createSlice({
       });
   }
 });
+
+export const { setPreloadCamera } = cameraSlice.actions;

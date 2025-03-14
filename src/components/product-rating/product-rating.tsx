@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import classNames from 'classnames';
 
 type ProductRatingProps = {
@@ -9,7 +10,7 @@ type ProductRatingProps = {
 const STAR_COUNT = 5;
 
 
-export default function ProductRating({ isCard = false, rating, reviewCount }: ProductRatingProps): JSX.Element {
+function BaseProductRating({ isCard = false, rating, reviewCount }: ProductRatingProps): JSX.Element {
   return (
     <div className={classNames('rate', { 'product-card__rate': isCard, 'product__rate': !isCard })}>
       {Array.from({ length: STAR_COUNT }, (_, index) => (
@@ -26,3 +27,5 @@ export default function ProductRating({ isCard = false, rating, reviewCount }: P
     </div>
   );
 }
+
+export const ProductRating = memo(BaseProductRating);

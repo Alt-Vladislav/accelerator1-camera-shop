@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import './product-title.css';
 
 type ProductTitleProps = {
@@ -14,7 +15,7 @@ const CorrectionMap = {
 const EXCLUSION_CATEGORY = 'Ретрокамера';
 
 
-export default function ProductTitle({ isCard = false, name, category }: ProductTitleProps): JSX.Element {
+function BaseProductTitle({ isCard = false, name, category }: ProductTitleProps): JSX.Element {
   const titleStart = name.includes(EXCLUSION_CATEGORY) ? '' : category;
   const title = `${titleStart} ${name.replace(CorrectionMap.SearchText, CorrectionMap.ReplaceText)}`;
 
@@ -24,3 +25,5 @@ export default function ProductTitle({ isCard = false, name, category }: Product
       : <h1 className="title title--h3">{title}</h1>
   );
 }
+
+export const ProductTitle = memo(BaseProductTitle);

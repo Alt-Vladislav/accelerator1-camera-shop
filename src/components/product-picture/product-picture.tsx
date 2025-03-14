@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import classNames from 'classnames';
 
 type ProductPictureProps = {
@@ -12,7 +13,7 @@ type ProductPictureProps = {
 }
 
 
-export default function ProductPicture({ isCard = false, imageJpg, imageJpg2x, imageWebp, imageWebp2x, width, height, title = '' }: ProductPictureProps): JSX.Element {
+function BaseProductPicture({ isCard = false, imageJpg, imageJpg2x, imageWebp, imageWebp2x, width, height, title = '' }: ProductPictureProps): JSX.Element {
   return (
     <div className={classNames({ 'product-card__img': isCard, 'product__img': !isCard })}>
       <picture>
@@ -31,3 +32,5 @@ export default function ProductPicture({ isCard = false, imageJpg, imageJpg2x, i
     </div>
   );
 }
+
+export const ProductPicture = memo(BaseProductPicture);
