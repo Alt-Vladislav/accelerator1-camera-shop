@@ -28,13 +28,12 @@ export default function ReviewBlock() {
         <div className="container">
           <div className="page-content__headed">
             <h2 className="title title--h3">Отзывы</h2>
+            {false && <Button text='Оставить свой отзыв' type='button' />}
           </div>
           {
             loadingStatus === 'Loading'
-              ?
-              <Spinner />
-              :
-              (
+              ? <Spinner />
+              : (
                 <ul className="review-block__list">
                   {reviews
                     .slice(0, visibleCommentsNumber)

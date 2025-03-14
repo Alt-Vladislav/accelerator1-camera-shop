@@ -32,8 +32,7 @@ export default function Layout(): JSX.Element {
         </div>
       </main>
 
-      {/* TODO: сделать кнопку наверх */}
-      {false && <UpButton />}
+      {currentPage === 'Product' && <UpButton />}
       <Footer currentPage={currentPage} />
     </div>
   );
