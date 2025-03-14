@@ -1,5 +1,5 @@
 import { AppRoute } from './consts';
-import { Page } from './types';
+import { Page, Review } from './types';
 
 const getPageName = (path: string): Page | undefined => {
   const processedPath = path.replace(/\/camera\/[^/]+/, '/camera/:id');
@@ -11,4 +11,6 @@ const getPageName = (path: string): Page | undefined => {
   }
 };
 
-export { getPageName };
+const sortReviews = (reviewA: Review, reviewB: Review) => new Date(reviewB.createAt).getTime() - new Date(reviewA.createAt).getTime();
+
+export { getPageName, sortReviews };

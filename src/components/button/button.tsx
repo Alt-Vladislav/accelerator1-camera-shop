@@ -8,16 +8,18 @@ type ButtonProps = {
   isModal?: boolean;
   extraClass?: string;
   isDisabled?: boolean;
+  onClick?: () => void;
 }
 
 const ICON_TRIGGER_KEYWORDS = ['Добавить в корзину', 'Заказать'];
 
-function BaseButton({ text, type, isPurple = false, isModal = false, extraClass = '', isDisabled = false }: ButtonProps): JSX.Element {
+function BaseButton({ text, type, isPurple = false, isModal = false, extraClass = '', isDisabled = false, onClick }: ButtonProps): JSX.Element {
   return (
     <button
       className={classNames(`btn ${extraClass}`, { 'btn--purple': isPurple, 'modal__btn': isModal })}
       type={type}
       disabled={isDisabled}
+      onClick={onClick}
     >
       {
         (ICON_TRIGGER_KEYWORDS.includes(text)) &&
