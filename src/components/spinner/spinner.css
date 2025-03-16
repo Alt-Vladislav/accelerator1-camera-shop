@@ -19,6 +19,10 @@
   padding-bottom: 50%;
 }
 
+.lowered {
+  margin-top: 10%;
+}
+
 .spinner div {
   box-sizing: border-box;
   position: absolute;

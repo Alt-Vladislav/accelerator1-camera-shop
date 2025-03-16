@@ -1,6 +1,7 @@
 import { AppState } from '../types';
 import { Camera } from '../../types';
 import { SliceName, LoadingStatus } from '../consts';
+import { sortReviews } from '../../utils';
 import { fetchCamera, fetchSimilarCameras, fetchReviews } from './camera-thunks';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
@@ -52,7 +53,7 @@ export const cameraSlice = createSlice({
         state.reviews.loadingStatus = LoadingStatus.Loading;
       })
       .addCase(fetchReviews.fulfilled, (state, action) => {
-        state.reviews.data = action.payload;
+        state.reviews.data = action.payload.sort(sortReviews);
         state.reviews.loadingStatus = LoadingStatus.Loaded;
       })
       .addCase(fetchReviews.rejected, (state) => {
